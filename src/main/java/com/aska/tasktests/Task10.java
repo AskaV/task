@@ -17,4 +17,11 @@ public class Task10 {
     }
 
 }
+//    public static List<Character> getSequenceOfCharactersSortedByInitialLengthOfString(List<String> strings) {
+//        return strings.stream()
+//                .sorted((a, b) -> -Integer
+//                .compare(a.length(), b.length())).
+//                map(string -> Character.toUpperCase(string.charAt(string.length() - 1)))
+//                .collect(Collectors.toList());
+//    }
 

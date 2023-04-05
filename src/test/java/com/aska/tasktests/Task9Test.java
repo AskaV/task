@@ -16,7 +16,7 @@ public class Task9Test {
 
     @Test
     public void testFilterByFirstAndLastCharacter() {
-        List<String> list = Arrays.asList("ABC", "A", "BCD", "D");
-        Assert.assertEquals(Task9.task9Expres(list), Arrays.asList("4-A", "3-B", "1-D"));
+        List<String> list = Arrays.asList("BCD", "B", "ABC", "A", "D", "HRE");
+        Assert.assertEquals(Task9.task9Expres(list), Arrays.asList("4-A", "4-B", "3-H", "1-D"));
     }
 }

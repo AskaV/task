@@ -1,26 +1,31 @@
 package com.aska.tasktests;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.ArrayUtils;
-
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Task7 {
 
-    public static Object task7Expres(int number, List<Integer> wordList) {
-
-    return  wordList
-            .stream()
-            .skip(number)
-            .filter(str -> str % 2 == 0)
-            .distinct()//возвращает только уникальные елементыы потока
-            .sorted(Comparator.reverseOrder())
-            .collect(Collectors.toList());
-    }
+    public static Object task7Expres(int k, List<Integer> integerList) {
+        return new ArrayList<Integer>() {
+            {
+                addAll(integerList
+                        .subList(k, integerList.size())
+                        .stream()
+                        .filter(elSet1 -> (integerList
+                                .stream()
+                                .filter(elementSet2 -> elementSet2 % 2 == 0))
+                                .noneMatch(elementSet2 -> elementSet2.equals(elSet1)))
+                        .collect(Collectors.toList()));
+                addAll(integerList
+                        .stream()
+                        .filter(elementSet2 -> elementSet2 % 2 == 0)
+                        .filter(elementSet2 -> integerList
+                                .subList(k, integerList.size())
+                                .stream()
+                                .noneMatch(elSet1 -> elSet1.equals(elementSet2)))
+                        .collect(Collectors.toList()));
+            }
+        }.stream().sorted((el1, el2) -> Integer.compare(el1, el2) * (-1)).collect(Collectors.toList());
 
 
 }

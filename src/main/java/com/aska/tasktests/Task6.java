@@ -2,9 +2,7 @@ package com.aska.tasktests;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Task6 {
 
@@ -16,10 +14,10 @@ public class Task6 {
                 .map(intStr -> wordList2
                         .stream()
                         .filter(str2 -> str2.length() > 0
-                                & str2.length() == intStr
-                                & Character.isDigit(str2.charAt(0)))
-                        .findFirst())
-                .flatMap(o -> o.isPresent() ? Stream.of(o.get()) : Stream.of("Not Found"))
+                                && str2.length() == intStr
+                                && Character.isDigit(str2.charAt(0)))
+                        .findFirst()
+                        .orElse("Not Found"))
                 .collect(Collectors.toList());
     }
 }
